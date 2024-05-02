@@ -25,6 +25,10 @@
     <%= form.label :author_id, style: "display: block" %>
     <%= form.text_field :author_id %>
   </div>
+  <div class="field">
+  <%= form.label :creator%>
+  <%= form.collection_select :author_id, Author.all, :id, :name, prompt: "Select Creator" %>
+</div>
 
   <div>
     <%= form.submit %>
