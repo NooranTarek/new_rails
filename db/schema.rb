@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_220629) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_221404) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.date "dob"
@@ -24,6 +24,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_220629) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "emojis_posts", id: false, force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "emoji_id", null: false
+    t.index ["emoji_id", "post_id"], name: "index_emojis_posts_on_emoji_id_and_post_id"
+    t.index ["post_id", "emoji_id"], name: "index_emojis_posts_on_post_id_and_emoji_id"
   end
 
   create_table "posts", force: :cascade do |t|
